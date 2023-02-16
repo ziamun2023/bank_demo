@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<script src="https://cdn.tailwindcss.com"></script>
+<body>
+ <!-- <div>
+  <h1>deposit</h1>
+  <p id="show" class="border-4 border-black w-96">
+
+  </p>
+ </div>
+  <input type="text" id="comment" class="border-2 border-black mt-14">
+  <button id="clickd">submit</button>
+
+  <script>
+    document.getElementById('clickd').addEventListener('click', function(){
+   const comment=document.getElementById('comment');
+   const comvalue=comment.value;
+   const showt=document.getElementById('show');
+   const pd=document.createElement('p')
+   pd.innerText=comvalue
+   showt.appendChild(pd)
+   comment.value="";;
+    }
+    )
+  </script> -->
+
+
+<!-- deposs -->
+<section class="grid grid-cols-2 gap-14">
+  <section class="container mx-auto mt-12">
+
+    <div  class="grid grid-cols-3 gap-4 ">
+      <div class="bg-green-400  drop-shadow-xl rounded-md ml-2 h-42 pb-8  ">
+  <h1 class="text-center mt-6 text-2xl">deposit</h1>
+  <h4 class="text-center  mt-6 text-3xl bg-white rounded-md m-2 overflow-scroll" >$ <span id="ShowDiposite" >0</span>
+  </h4>
+      </div>
+  
+      <!-- withdray -->
+      <div class="bg-green-400  rounded-md ml-2 h-42 pb-8 ">
+        <h1 class="text-center mt-6 text-2xl">withdraw</h1>
+        <h4 class="text-center  mt-6 text-3xl bg-white rounded-md m-2 overflow-scroll">$ <span id="dis-with">0</span>
+        </h4>
+            </div>
+  
+            <!-- total -->
+     <div class="bg-green-400 rounded-md ml-2 h-42 pb-8 ">
+  <h1 class="text-center mt-6 text-2xl">Total</h1>
+  <h4 class="text-center  mt-6 text-3xl bg-white rounded-md m-2 overflow-scroll">$ <span id="totalBal">0</span>
+  </h4>
+      </div>
+    </div>
+
+
+
+    <div class="grid grid-cols-2 gap-14"><div class="bg-indigo-500 ml-8 text-center mt-8 rounded-md drop-shadow-2xl">
+      <h1 class="text-3xl ">deposit</h1>
+      <input id="input" type="text" class="w-9/12  mb-2 px-3 bg-slate-200 m-2" placeholder="input number">
+      <button id="btn" class="bg-rose-700 rounded-md p-2 m-2 drop-shadow-2xl">submit</button>
+    </div>
+    <!-- --------input withdraw--------- -->
+    <div class="bg-indigo-500 text-center mt-8 rounded-md bg-amber-700 mr-8 drop-shadow-2xl">
+      <h1 class="text-3xl ">withdraw</h1>
+      <input id="with-input" type="text" class="w-9/12  mb-2 px-3 bg-slate-200 m-2" placeholder="input number">
+      <button id="click-withdraw" class="bg-orange-200 p-2 m-2 rounded-md  drop-shadow-2xl" >submit</button>
+    </div></div>
+  </section>
+
+ 
+  <div class="overflow-x-auto mt-14 mr-14 ">
+    <div class="grid grid-rows-3 gap-2">
+      <div class="bg-orange-400 w-96 h-14 flex flex-row items-center rounded-md"><div class="ml-8">Total transaction of Deposit </div> <div class="ml-24"><span id="total-deposite1">0</span></div></div> 
+      <div class="bg-lime-400 w-96 h-14 flex flex-row items-center rounded-md"><div class="ml-8">Total transaction withdraw</div> <div class="ml-24"> <span id="updatewith">0</span></div> </div> 
+      <div class="bg-pink-400 w-96 h-14 flex flex-row items-center rounded-md "><div class="ml-8">Bank charges 2%</div> <div class="ml-24">$ <span id="percetn">0</span> <span> <button 
+         class="bg-black rounded-md text-white hover:bg-orange-200 hover:text-black" id="calpercent2">calculate the charge</button></span></div> </div> 
+    </div>
+    <table class="table table-zebra w-full mt-2">
+      
+      <!-- head -->
+      <thead  class="bg-neutral-300 ">
+        <tr>
+          <th></th>
+          <th>Transaction Type</th>
+          <th>Amount</th>
+          <th>time</th>
+          <th>date</th>
+        </tr>
+      </thead>
+      <tbody  id="table-row" >
+        <!-- row 1 -->
+      
+        <!-- row 2 -->
+       
+      </tbody>
+      
+    </table> 
+  </div>
+  
+</section>
+
+<script>
+  const updatewithdrawamount=document.getElementById('updatewith')
+const updateofwith=updatewithdrawamount.innerText
+const updatefloat=parseFloat(updateofwith)
+const updatewithdrawamount22=document.getElementById('total-deposite1')
+const updateofwith11=updatewithdrawamount22.innerText
+const updatefloatw=parseFloat(updateofwith11)
+
+const percentt=document.getElementById('percetn')
+const percentInner=percentt.innerText
+const parsepercent=parseFloat(percentInner)
+
+
+
+
+  // deposit script
+  let serial=0;
+  document.getElementById('btn').addEventListener('click',function(){
+   serial=serial+1
+    const getDepositieInput=document.getElementById('input');
+    const inputInnerText=getDepositieInput.value;
+    const makeFloate=parseFloat(inputInnerText)  
+    // const showupdateofdepo=document.getElementById('total-deposite1')
+    // const updatefloat=showupdateofdepo.innerText
+    // const floatit6=parseFloat(updatefloat)
+   
+if(isNaN(inputInnerText)){
+  alert('not a number')
+  return
+}
+
+
+
+
+  const getdisplay=document.getElementById('ShowDiposite');
+ const dipositeContent= getdisplay.innerText
+ const makeFloat2=parseFloat(dipositeContent)
+ const thetype="deposit"
+ const showtime=new Date().toLocaleTimeString()
+ const showDate=new Date().toLocaleDateString(); // 11/16/2015
+
+// const updateit=makeFloate+floatit6   
+var calculate =makeFloate+makeFloat2
+
+// showupdateofdepo.innerText=updateit
+getdisplay.innerText=calculate
+
+const totalBalance=document.getElementById('totalBal')
+  const balInner=totalBalance.innerText
+  const floatit3=parseFloat(balInner)
+  
+  const addtototal=floatit3+makeFloate
+  totalBalance.innerText=addtototal
+  getDepositieInput.value='';
+
+  
+
+  display(thetype,makeFloate,showtime,showDate)
+
+  const updatewithdrawamount22=document.getElementById('total-deposite1')
+const updateofwith11=updatewithdrawamount22.innerText
+const updatefloatw=parseFloat(updateofwith11)
+
+let got2=updatefloatw+1
+updatewithdrawamount22.innerText=got2;
+
+const percentt=document.getElementById('percetn')
+const percentInner=percentt.innerText
+const parsepercent=parseFloat(percentInner)
+
+
+
+  })
+
+
+function display(transactionType,amount,time,date){
+  const container=document.getElementById('table-row');
+  const tr=document.createElement('tr');
+  tr.innerHTML=`
+  <td>${serial}</td>
+  <td>${transactionType}</td>
+  <td>${amount}</td>
+  <td>${time}</td>
+  <td>${date}</td>
+
+  `;
+  container.appendChild(tr)
+}
+
+// document.getElementById('click-withdraw').addEventListener('click',function(){
+//   console.log('clickd')
+// })
+
+document.getElementById('click-withdraw').addEventListener('click',function(){
+  const getthewithdata=document.getElementById('with-input')
+  const withInner=getthewithdata.value;
+  const withFloat=parseFloat(withInner)
+  // const updateofwith=document.getElementById('updatewith')
+  // const updatewithInner=updateofwith.innerText;
+  // const parsewith=parseFloat(updatewithInner);
+  
+  if(isNaN(withInner)){
+    alert ('not a number')
+    return
+  }
+
+  const displaywithdrawmoney=document.getElementById('dis-with');
+  const displaywithdrawmoneyinner=displaywithdrawmoney.innerText
+  const float99=parseFloat(displaywithdrawmoneyinner)
+  const calculatwithdrawmoney=withFloat+float99;
+  // const calculate22=parsewith+withFloat
+  displaywithdrawmoney.innerText=calculatwithdrawmoney
+  // updateofwith.innerText=calculate22
+  getthewithdata.value='';
+
+  // const withdisplay=document.getElementById('dis-with')
+  // const innerofwithdis=withdisplay.innerText;
+  // const disofwithFloat=parseFloat(innerofwithdis)
+  const totalBalance=document.getElementById('totalBal')
+  const balInner=totalBalance.innerText
+  const floatit3=parseFloat(balInner) 
+
+  serial=serial+1
+  const minustotal=floatit3-withFloat
+  totalBalance.innerText=minustotal
+const thetype2="withdraw"
+const showtime=new Date().toLocaleTimeString()
+ const showDate=new Date().toLocaleDateString(); // 11/16/2015
+//   const calculatewith=disofwithFloat+withFloat;
+  
+//   withdisplay.innerText=calculatewith
+// const updatewithdraw=document.getElementById('updatewith')
+// const withupInner=updatewithdraw.innerText;
+// const upwithfloat=parseFloat(withupInner);
+
+// const calculateupdateofwithdraw=upwithfloat+disofwithFloat
+// updatewithdraw.innerText=calculateupdateofwithdraw
+display(thetype2,withFloat,showtime,showDate)
+const updatewithdrawamount=document.getElementById('updatewith')
+const updateofwith=updatewithdrawamount.innerText
+const updatefloat=parseFloat(updateofwith)
+let got=updatefloat+1
+updatewithdrawamount.innerText=got
+
+
+})
+
+document.getElementById('calpercent2').addEventListener('click', function(){
+  const getupdateofpercentage=document.getElementById('percetn')
+  const parrrrinner=getupdateofpercentage.innerText
+  const floatparr=parseFloat(parrrrinner)
+
+  const totalBalance=document.getElementById('totalBal')
+  const balInner=totalBalance.innerText
+  const floatit3=parseFloat(balInner) 
+
+  if(floatit3>0){
+    const calculation=floatit3*0.2
+     return getupdateofpercentage.innerText=calculation
+  
+  } 
+  else if(floatit3<0 ){
+    return getupdateofpercentage.innerText="you have dept"
+  }
+  else{
+    return  getupdateofpercentage.innerText="there is no balance"
+  }
+  
+
+})
+
+
+
+  
+ 
+</script>
+</body>
+</html>

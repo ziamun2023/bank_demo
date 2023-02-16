@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <input type="text " id="write">
+    <button id="click">click</button>
+    <script>
+        document.getElementById('add-btn').addEventListener('click',function(){
+            const value = document.getElementById('text-input').value;
+            const container=document.getElementById('parent-container');
+            const li=document.createElement("li");
+            li.innerText=value;
+            li.classList.add('new-li')
+            container.appendChild(li);
+            const allList=document.getElementsByClassName('new-li');
+            for (const item of allList){
+                item.addEventListener('click', function(e){
+                    console.log(e.target.parentNode.removeChild(e.target))
+                });
+            }
+        })
+    </script> -->
+
+    <h1 id="del">explore more event</h1>
+    <button id="btn-more" disabled> delete</button>
+    <input id="text-field" type="text">
+    <script>
+        // document.getElementById('text-field').addEventListener('focus',function(){
+        //     console.log('event triggered')
+        // })
+        // document.getElementById('text-field').addEventListener('blur',function(){
+        //     console.log('event triggered blurred')
+        // })
+        // document.getElementById('text-field').addEventListener('click',function(){
+        //     const show= document.getElementById('del')
+        //     show.style.display='none';
+        // })
+        // document.getElementById('btn-more').addEventListener('click',function(){
+        //     const dis=document.getElementById('del')
+        //     dis.style.display='block    '
+        // })
+        document.getElementById('text-field').addEventListener('keyup',function(event){
+            const text=event.target.value
+            const button=document.getElementById('btn-more');
+            if(text=='delete'){
+                button.removeAttribute('disabled')
+            }
+            else{
+                button.setAttribute('disabled',true)
+            }
+        })
+
+        document.getElementById('btn-more').addEventListener('click',function(){
+            const dell=document.getElementById('del')
+            dell.style.display='none'
+        })
+    </script>
+</body>
+</html>
